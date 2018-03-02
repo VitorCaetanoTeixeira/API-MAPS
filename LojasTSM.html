@@ -1,0 +1,100 @@
+<html>
+<head>
+
+</head>
+<!--<?php
+
+get_header(); ?>
+-->
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<style>
+#map{
+	width: 70%;
+	height: 60%;
+	overflow: hidden;
+    float: left;
+}
+#info{
+	width: 30%;
+	height: 60%;	
+	overflow: hidden;
+    float: left;
+    background-color: #ffcf24;
+}
+html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+img{
+  width: 100%;
+
+}
+</style>
+<body>
+<!--
+  click Change info
+https://developers.google.com/maps/documentation/javascript/kml?hl=pt-br
+  Marker ico
+https://developers.google.com/maps/documentation/javascript/custom-markers?hl=pt-br
+  
+
+-->
+
+<div id="primary" class="content-area col-sm-12 col-md-12">
+
+<div id="map"></div>
+  <div id="info">
+    <img id="img" src=""></img>
+    <label>Endereço:</label>
+    <div id="endereco"></div>
+    <label>Telefone:</label>
+    <div id="tel"></div>
+    <label>Whatsapp:</label>
+    <div id="whats"></div>
+
+  </div>
+    <script>
+    	var ico = "";//Icone do PIN
+
+      function initMap() {//Inicia Mapa
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 10,
+          center: {lat: -23.8646687, lng: -46.5041788}
+        });
+
+        //Marcadores
+        var marker1 = new google.maps.Marker({
+            position: locations[1],
+            //icon: icon,
+            map: map
+          });
+
+        //Função de clique do marcador.
+        marker1.addListener('click', function() {
+            document.getElementById("endereco").innerHTML = "Praia Grande/SP – Av.Pres. Costa e Silva, 1115";
+            document.getElementById("tel").innerHTML = "(13) 3592-1000";
+            document.getElementById("whats").innerHTML = "(13) 97414-7167";
+             document.getElementById("img").src ="http://tintassaomiguel.com.br/site/wp-content/uploads/2015/05/loja-de-tintas-em-praia-grande-tintas-sao-miguel1-120x85.jpg";
+        });
+
+       
+
+      }
+       //var src = 'https://developers.google.com/maps/documentation/javascript/examples/kml/westcampus.kml';
+
+      	//Locais de Marcadores.
+        var locations = [
+        {lat: -23.8646687, lng: -46.5041788},
+        {lat:-24.0033385, lng:-46.4130642}]
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApKa0K9aESa6Zzjb6jIMysXKcRx8H-8Xc&callback=initMap">
+    </script>
+</div>
+</body>
+<!--<?php get_footer(); ?>
+-->
+</html>
