@@ -11,14 +11,14 @@ get_header(); ?>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <style>
 #map{
-	width: 70%;
-	height: 60%;
+  width: 100%;
+	height: 50%;
 	overflow: hidden;
     float: left;
 }
 #info{
-	width: 30%;
-	height: 60%;	
+	width: 100%;
+	height: auto;
 	overflow: hidden;
     float: left;
     background-color: #ffcf24;
@@ -32,9 +32,41 @@ img{
   width: 100%;
 
 }
+#loc0{
+  display: none;
+}
+#loc1{
+  display: none;
+}
+#loc2{
+  display: none;
+}
+#loc3{
+  display: none;
+}
+#loc4{
+  display: none;
+}
+#loc5{
+  display: none;
+}
+#loc6{
+  display: none;
+}
+.no-gutter > [class*='col-'] {
+    padding-right:0;
+    padding-left:0;
+}
+.infoText{
+  padding: 2%;
+}
 </style>
 <body>
 <!--
+
+  -23.9445664!4d-46.3265133
+
+  -23.9908792!4d-46.2597799
   click Change info
 https://developers.google.com/maps/documentation/javascript/kml?hl=pt-br
   Marker ico
@@ -43,43 +75,170 @@ https://developers.google.com/maps/documentation/javascript/custom-markers?hl=pt
 
 -->
 
-<div id="primary" class="content-area col-sm-12 col-md-12">
 
-<div id="map"></div>
-  <div id="info">
-    <img id="img" src=""></img>
-    <label>Endereço:</label>
-    <div id="endereco"></div>
-    <label>Telefone:</label>
-    <div id="tel"></div>
-    <label>Whatsapp:</label>
-    <div id="whats"></div>
+<div id="primary" class="content-area col-sm-12 col-md-12 no-gutter">
+<div class="col-md-8">
+    <div id="map"></div>
+</div>
+<div class="col-md-4">
+      <div id="info">
 
-  </div>
+        <div id="loc0">
+            <img id="img" src="img/loja1.png"></img>
+            <div class="infoText">
+                <label>Endereço:</label>
+                <div id="endereco"><p>Santos/SP – Av. Senador Feijó, 418</p></div>
+                <label>Telefone:</label>
+                <div id="tel"><p>(13) 3222-7800</p></div>
+                <label>Whatsapp:</label>
+                <div id="whats"><p>(13) 97410-5484</p></div>
+            </div>
+        </div>
+
+        <div id="loc1">
+            <img id="img" src="img/loja1.png"></img>
+            <div class="infoText">
+                <label>Endereço:</label>
+                <div id="endereco"><p>Praia Grande/SP – Av.Pres. Costa e Silva, 1115</p></div>
+                <label>Telefone:</label>
+                <div id="tel"><p>(13) 3592-1000</p></div>
+                <label>Whatsapp:</label>
+                <div id="whats"><p>(13) 97414-7167</p></div>
+            </div>
+        </div>
+
+        <div id="loc2">
+            <img id="img" src="img/loja1.png"></img>
+            <div class="infoText">
+                <label>Endereço:</label>
+                <div id="endereco"><p>Santos/SP – Av. Senador Feijó, 542</p></div>
+                <label>Telefone:</label>
+                <div id="tel"><p>(13) 3223-8881</p></div>
+                <label>Whatsapp:</label>
+                <div id="whats"><p>(13) 97410-5484</p></div>
+            </div>
+        </div>
+
+        <div id="loc3">
+            <img id="img" src="img/loja1.png"></img>
+            <div class="infoText">
+                <label>Endereço:</label>
+                <div id="endereco"><p>Vicente de Carvalho/SP Via. Santos Drumont, 631</p></div>
+                <label>Telefone:</label>
+                <div id="tel"><p>(13) 3352-3497</p></div>
+                <label>Whatsapp:</label>
+                <div id="whats"><p>(13) 97402-6554</p></div>
+            </div>
+        </div>
+
+        <div id="loc4">
+            <img id="img" src="img/loja1.png"></img>
+            <div class="infoText">
+                <label>Endereço:</label>
+                <div id="endereco"><p>Guarujá/SP – Av. Puglisi, 735</p></div>
+                <label>Telefone:</label>
+                <div id="tel"><p>(13) 3386-4200</p></div>
+                <label>Whatsapp:</label>
+                <div id="whats"><p>(13) 99724-1006</p></div>
+            </div>
+        </div>
+
+        <div id="loc5">
+            <img id="img" src="img/loja1.png"></img>
+            <div class="infoText">
+                <label>Endereço:</label>
+                <div id="endereco"><p>Guarujá/SP – Av. Dom Pedor I, 1130</p></div>
+                <label>Telefone:</label>
+                <div id="tel"><p>(13) 3387-1017</p></div>
+                <label>Whatsapp:</label>
+                <div id="whats"><p>(13) 97410-0820</p></div>
+            </div>
+        </div>
+
+        <div id="loc6">
+            <img id="img" src="img/loja1.png"></img>
+            <div class="infoText">
+                <label>Endereço:</label>
+                <div id="endereco"><p>Mongaguá/SP Av. São Paulo, 1219</p></div>
+                <label>Telefone:</label>
+                <div id="tel"><p>(13) 3507-3881</p></div>
+                <label>Whatsapp:</label>
+                <div id="whats"><p>(13) 9741-0386</p></div>
+            </div>
+        </div>
+      </div>
+</div>
     <script>
     	var ico = "";//Icone do PIN
 
       function initMap() {//Inicia Mapa
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 10,
-          center: {lat: -23.8646687, lng: -46.5041788}
+          zoom: 11,
+          center: {lat: -24.0122575, lng: -46.4848003}//-24.0122575,-46.4848003
         });
 
         //Marcadores
+        var marker0 = new google.maps.Marker({
+            position: locations[0],
+            //icon: icon,
+            map: map
+          });
         var marker1 = new google.maps.Marker({
             position: locations[1],
             //icon: icon,
             map: map
           });
+        var marker2 = new google.maps.Marker({
+            position: locations[2],
+            //icon: icon,
+            map: map
+          });
+        var marker3 = new google.maps.Marker({
+            position: locations[3],
+            //icon: icon,
+            map: map
+          });
+        var marker4 = new google.maps.Marker({
+            position: locations[4],
+            //icon: icon,
+            map: map
+          });
 
+        var marker5 = new google.maps.Marker({
+            position: locations[5],
+            //icon: icon,
+            map: map
+          });
+
+        var marker6 = new google.maps.Marker({
+            position: locations[6],
+            //icon: icon,
+            map: map
+          });
         //Função de clique do marcador.
-        marker1.addListener('click', function() {
-            document.getElementById("endereco").innerHTML = "Praia Grande/SP – Av.Pres. Costa e Silva, 1115";
-            document.getElementById("tel").innerHTML = "(13) 3592-1000";
-            document.getElementById("whats").innerHTML = "(13) 97414-7167";
-             document.getElementById("img").src ="http://tintassaomiguel.com.br/site/wp-content/uploads/2015/05/loja-de-tintas-em-praia-grande-tintas-sao-miguel1-120x85.jpg";
+        marker0.addListener('click', function() {
+           locChange(0);
         });
 
+        marker1.addListener('click', function() {
+           locChange(1);
+        });
+        marker2.addListener('click', function() {
+           locChange(2);
+        });
+        marker3.addListener('click', function() {
+           locChange(3);
+        });
+        marker4.addListener('click', function() {
+           locChange(4);
+        });
+        marker5.addListener('click', function() {
+           locChange(5);
+        });
+        marker6.addListener('click', function() {
+           locChange(6);
+        });
+        
        
 
       }
@@ -87,8 +246,30 @@ https://developers.google.com/maps/documentation/javascript/custom-markers?hl=pt
 
       	//Locais de Marcadores.
         var locations = [
-        {lat: -23.8646687, lng: -46.5041788},
-        {lat:-24.0033385, lng:-46.4130642}]
+        {lat: -23.9445664, lng: -46.3265133},//[0] Santos Senador Feijor 418
+        {lat:-24.0033385, lng:-46.4130642},//[1]Praia Grande
+        {lat:-23.9479786, lng:-46.3270283},//[2]-23.9479786/-46.3270283 Santos Senador Feijor 542
+        {lat:-23.9479394, lng:-46.2964296},//[3]-23.9479394/-46.2964296 vicente de carvalho Via Santos Dumont, 635 
+        {lat:-23.9908792, lng:-46.2597799},//[4]-23.9908792/-46.2597799 Av. Puglisi, 735 - Centro, Guarujá
+        {lat:-23.9853508, lng:-46.2405109},//[5]-23.9853508/-46.2405109  Av. Dom Pedro I, 1130 - Jardim Tres Marias, Guarujá - SP, 11440-001
+        {lat:-24.092936, lng:-46.6165352}//[6]-24.092936/-46.6165352 Av. São Paulo, 1219 - Jardim Caiahu, Mongaguá - SP, 11730-000
+
+        ];
+
+        //function change location info
+        function locChange(i){
+           for(var a = 0; a < 7; a++ )
+           {
+              if(i == a){
+                document.getElementById("loc"+a).style.display = "block";
+              } else{
+                document.getElementById("loc"+a).style.display = "none";
+       
+              }  
+           }
+        }
+
+
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApKa0K9aESa6Zzjb6jIMysXKcRx8H-8Xc&callback=initMap">
