@@ -12,13 +12,13 @@ get_header(); ?>
 <style>
 #map{
   width: 100%;
-	height: 50%;
+	height: 70%;
 	overflow: hidden;
     float: left;
 }
 #info{
 	width: 100%;
-	height: auto;
+	height: 70%;
 	overflow: hidden;
     float: left;
     background-color: #ffcf24;
@@ -30,10 +30,10 @@ html, body {
       }
 img{
   width: 100%;
-
+  height: 60%;
 }
 #loc0{
-  display: none;
+  display: block;
 }
 #loc1{
   display: none;
@@ -84,7 +84,7 @@ https://developers.google.com/maps/documentation/javascript/custom-markers?hl=pt
       <div id="info">
 
         <div id="loc0">
-            <img id="img" src="img/loja1.png"></img>
+            <img id="img" src="img/lojas/Loja 04 - Santos.jpg"></img>
             <div class="infoText">
                 <label>Endereço:</label>
                 <div id="endereco"><p>Santos/SP – Av. Senador Feijó, 418</p></div>
@@ -96,7 +96,7 @@ https://developers.google.com/maps/documentation/javascript/custom-markers?hl=pt
         </div>
 
         <div id="loc1">
-            <img id="img" src="img/loja1.png"></img>
+            <img id="img" src="img/lojas/Loja 03 - Praia Grande.jpg"></img>
             <div class="infoText">
                 <label>Endereço:</label>
                 <div id="endereco"><p>Praia Grande/SP – Av.Pres. Costa e Silva, 1115</p></div>
@@ -108,7 +108,7 @@ https://developers.google.com/maps/documentation/javascript/custom-markers?hl=pt
         </div>
 
         <div id="loc2">
-            <img id="img" src="img/loja1.png"></img>
+            <img id="img" src="img/lojas/Loja 01 - Matriz Santos.jpg"></img>
             <div class="infoText">
                 <label>Endereço:</label>
                 <div id="endereco"><p>Santos/SP – Av. Senador Feijó, 542</p></div>
@@ -120,7 +120,7 @@ https://developers.google.com/maps/documentation/javascript/custom-markers?hl=pt
         </div>
 
         <div id="loc3">
-            <img id="img" src="img/loja1.png"></img>
+            <img id="img" src="img/lojas/Loja 05 - Vicente de Carvalho.jpg"></img>
             <div class="infoText">
                 <label>Endereço:</label>
                 <div id="endereco"><p>Vicente de Carvalho/SP Via. Santos Drumont, 631</p></div>
@@ -132,7 +132,7 @@ https://developers.google.com/maps/documentation/javascript/custom-markers?hl=pt
         </div>
 
         <div id="loc4">
-            <img id="img" src="img/loja1.png"></img>
+            <img id="img" src="img/lojas/Loja 02 - Centro Guargujá.jpg"></img>
             <div class="infoText">
                 <label>Endereço:</label>
                 <div id="endereco"><p>Guarujá/SP – Av. Puglisi, 735</p></div>
@@ -144,7 +144,7 @@ https://developers.google.com/maps/documentation/javascript/custom-markers?hl=pt
         </div>
 
         <div id="loc5">
-            <img id="img" src="img/loja1.png"></img>
+            <img id="img" src="img/lojas/Loja 07 - Guarujá.jpg"></img>
             <div class="infoText">
                 <label>Endereço:</label>
                 <div id="endereco"><p>Guarujá/SP – Av. Dom Pedor I, 1130</p></div>
@@ -156,7 +156,7 @@ https://developers.google.com/maps/documentation/javascript/custom-markers?hl=pt
         </div>
 
         <div id="loc6">
-            <img id="img" src="img/loja1.png"></img>
+            <img id="img" src="img/lojas/Loja 06 - Mongaguá.jpg"></img>
             <div class="infoText">
                 <label>Endereço:</label>
                 <div id="endereco"><p>Mongaguá/SP Av. São Paulo, 1219</p></div>
@@ -169,8 +169,8 @@ https://developers.google.com/maps/documentation/javascript/custom-markers?hl=pt
       </div>
 </div>
     <script>
-    	var ico = "";//Icone do PIN
-
+    	var ico = "img/pin1small.png";//Icone do PIN
+      var ico1 = "img/pin2small.png";
       function initMap() {//Inicia Mapa
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 11,
@@ -180,67 +180,116 @@ https://developers.google.com/maps/documentation/javascript/custom-markers?hl=pt
         //Marcadores
         var marker0 = new google.maps.Marker({
             position: locations[0],
-            //icon: icon,
+            icon: ico,
             map: map
           });
         var marker1 = new google.maps.Marker({
             position: locations[1],
-            //icon: icon,
+            icon: ico,
             map: map
           });
         var marker2 = new google.maps.Marker({
             position: locations[2],
-            //icon: icon,
+            icon: ico1,
             map: map
           });
         var marker3 = new google.maps.Marker({
             position: locations[3],
-            //icon: icon,
+            icon: ico,
             map: map
           });
         var marker4 = new google.maps.Marker({
             position: locations[4],
-            //icon: icon,
+            icon: ico,
             map: map
           });
 
         var marker5 = new google.maps.Marker({
             position: locations[5],
-            //icon: icon,
+            icon: ico,
             map: map
           });
 
         var marker6 = new google.maps.Marker({
             position: locations[6],
-            //icon: icon,
+            icon: ico,
             map: map
           });
         //Função de clique do marcador.
         marker0.addListener('click', function() {
            locChange(0);
+           marker0.setIcon(ico1);
+           marker1.setIcon(ico);
+           marker2.setIcon(ico);
+           marker3.setIcon(ico);
+           marker4.setIcon(ico);
+           marker5.setIcon(ico);
+           marker6.setIcon(ico);
+
         });
 
         marker1.addListener('click', function() {
            locChange(1);
+           marker0.setIcon(ico);
+            marker1.setIcon(ico1);
+           marker2.setIcon(ico);
+           marker3.setIcon(ico);
+           marker4.setIcon(ico);
+           marker5.setIcon(ico);
+           marker6.setIcon(ico);
         });
         marker2.addListener('click', function() {
            locChange(2);
+           marker0.setIcon(ico);
+           marker1.setIcon(ico);
+           marker2.setIcon(ico1);
+           marker3.setIcon(ico);
+           marker4.setIcon(ico);
+           marker5.setIcon(ico);
+           marker6.setIcon(ico);
         });
         marker3.addListener('click', function() {
            locChange(3);
+           marker0.setIcon(ico);
+            marker1.setIcon(ico);
+           marker2.setIcon(ico);
+           marker3.setIcon(ico1);
+           marker4.setIcon(ico);
+           marker5.setIcon(ico);
+           marker6.setIcon(ico);
         });
         marker4.addListener('click', function() {
            locChange(4);
+           marker0.setIcon(ico);
+           marker1.setIcon(ico);
+           marker2.setIcon(ico);
+           marker3.setIcon(ico);
+           marker4.setIcon(ico1);
+           marker5.setIcon(ico);
+           marker6.setIcon(ico);
         });
         marker5.addListener('click', function() {
            locChange(5);
+           marker0.setIcon(ico);
+           marker1.setIcon(ico);
+           marker2.setIcon(ico);
+           marker3.setIcon(ico);
+           marker4.setIcon(ico);
+           marker5.setIcon(ico1);
+           marker6.setIcon(ico);
         });
         marker6.addListener('click', function() {
            locChange(6);
+           marker0.setIcon(ico);
+           marker1.setIcon(ico);
+           marker2.setIcon(ico);
+           marker3.setIcon(ico);
+           marker4.setIcon(ico);
+           marker5.setIcon(ico);
+           marker6.setIcon(ico1);
         });
         
        
-
       }
        //var src = 'https://developers.google.com/maps/documentation/javascript/examples/kml/westcampus.kml';
 
